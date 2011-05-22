@@ -13,10 +13,10 @@ require 'bundler'
 
 Bundler.require(:development)
 
-require 'toy/mongo'
+require 'toy/couch'
 require 'support/constants'
 
-STORE = Mongo::Connection.new.db('testing')['toystore-mongo']
+STORE = CouchRest.database!("http://127.0.0.1:5984/toystore-couch-test")
 
 Logger.new(log_path.join('test.log')).tap do |log|
   LogBuddy.init(:logger => log)
@@ -27,6 +27,6 @@ Rspec.configure do |c|
   c.include(Support::Constants)
 
   c.before(:each) do
-    STORE.remove
+    STORE.recreate!
   end
 end

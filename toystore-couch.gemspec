@@ -1,20 +1,19 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "toy/mongo/version"
+require "toy/couch/version"
 
 Gem::Specification.new do |s|
-  s.name        = "toystore-mongo"
-  s.version     = Toy::Mongo::VERSION
+  s.name        = "toystore-couch"
+  s.version     = Toy::Couch::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ['John Nunemaker']
-  s.email       = ['nunemaker@gmail.com']
+  s.authors     = ['Pelle Braendgaard']
+  s.email       = ['pelle@stakeventures.com']
   s.homepage    = ''
-  s.summary     = %q{Mongo integration for Toystore}
-  s.description = %q{Mongo integration for Toystore}
+  s.summary     = %q{CouchDB integration for Toystore}
+  s.description = %q{CouchDB integration for Toystore}
 
-  s.add_dependency('plucky', '~> 0.4.0')
   s.add_dependency('toystore', '~> 0.7.0')
-  s.add_dependency('adapter-mongo', '~> 0.5.2')
+  s.add_dependency('adapter-couch', '~> 0.1.1')
 
   s.files         = `git ls-files`.split("\n") - ['specs.watchr']
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

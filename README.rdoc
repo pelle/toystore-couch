@@ -1,10 +1,12 @@
-= Toystore Mongo
+NOT YET WORKING!!!!
 
-Mongo integration for Toystore.
+= Toystore Couch
+
+CouchDB integration for Toystore.
 
 == Install
 
-  $ gem install toystore-mongo
+  $ gem install toystore-couch
 
 == Note on Patches/Pull Requests
 
