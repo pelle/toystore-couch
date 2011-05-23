@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{CouchDB integration for Toystore}
 
   s.add_dependency('toystore', '~> 0.7.0')
-  s.add_dependency('adapter-couch', '~> 0.1.1')
+  s.add_dependency('adapter-couch', '~> 0.1.2')
 
   s.files         = `git ls-files`.split("\n") - ['specs.watchr']
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

@@ -1,8 +1,38 @@
-NOT YET WORKING!!!!
-
 = Toystore Couch
 
-CouchDB integration for Toystore.
+CouchDB integration for Toystore. Much of this is stolen whole sale from CouchRest Model https://github.com/couchrest/couchrest_model
+
+Currently it adds a few Couch necessities such as support for views (map reduce queries):
+
+==== Example views:
+ 
+  class Post
+    include Toy::Store
+    store :couch, CouchRest.database!("http://127.0.0.1:5984/agree2-development")
+    # view with default options
+    # query with Post.by_date
+    view_by :date, :descending => true
+ 
+    # view with compound sort-keys
+    # query with Post.by_user_id_and_date
+    view_by :user_id, :date
+ 
+    # view with custom map/reduce functions
+    # query with Post.by_tags :reduce => true
+    view_by :tags,                                                
+      :map =>                                                     
+        "function(doc) {                                          
+          if (doc['model'] == 'Post' && doc.tags) {                   
+            doc.tags.forEach(function(tag){                       
+              emit(doc.tag, 1);                                   
+            });                                                   
+          }                                                       
+        }",                                                       
+      :reduce =>                                                  
+        "function(keys, values, rereduce) {                       
+          return sum(values);                                     
+        }"                                                        
+  end
 
 == Install
 

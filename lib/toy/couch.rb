@@ -1,5 +1,8 @@
 require 'toy'
-require 'toy/couch/persistence'
+require 'toy/attributes'
+require 'toy/couch/type'
+require 'toy/couch/design_doc'
+require 'toy/couch/views'
 require 'adapter/couch'
 
 
@@ -8,7 +11,8 @@ module Toy
     extend ActiveSupport::Concern
 
     included do
-      include Persistence
+      include DesignDoc
+      include Views
     end
   end
 end
